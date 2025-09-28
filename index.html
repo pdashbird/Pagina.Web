@@ -1,0 +1,422 @@
+
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MoptoGP — Enciclopedia MotoGP</title>
+  <meta name="description" content="MoptoGP: todo sobre MotoGP — historia, categorías, equipos, calendario, campeones y recursos." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+
+    #gallery .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  #gallery .card img {
+    width: 100%;
+    height: 200px;       /* todas las imágenes con la misma altura */
+    object-fit: cover;   /* recorte sin deformar */
+    border-radius: 6px;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.5);
+  }
+
+    :root{
+      --accent:#d0021b; /* rojo MotoGP-like */
+      --dark:#0b0b0b;
+      --muted:#e9e9e9;
+      --glass: rgba(255,255,255,0.06);
+      --card-shadow: 0 6px 24px rgba(0,0,0,0.45);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#050505 0%,#121212 60%);color:#fff}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:linear-gradient(90deg, rgba(0,0,0,0.45), rgba(255,255,255,0.02));backdrop-filter: blur(4px)}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:52px;height:52px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ff6b6b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#111}
+    h1{margin:0;font-size:20px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-size:14px}
+    .hero{padding:60px 28px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    .hero-left h2{font-size:44px;margin:0 0 8px;color:var(--accent)}
+    .hero-left p{color:#ddd;line-height:1.5}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
+    .stats{display:flex;gap:12px;margin-top:12px}
+    .stat{flex:1;text-align:center}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    section{padding:28px}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .pill{background:var(--glass);padding:6px 10px;border-radius:999px;color:#fff;font-size:13px}
+    .rider{display:flex;gap:12px;align-items:center}
+    .rider img{width:84px;height:56px;object-fit:cover;border-radius:6px}
+    footer{padding:20px 28px;text-align:center;color:#bbb;border-top:1px solid rgba(255,255,255,0.03)}
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      nav{display:none}
+    }
+    /* small utilities */
+    a.btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:#111;font-weight:700;text-decoration:none}
+    .muted{color:#bdbdbd}
+    .grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+    .card-list{list-style:none;padding:0;margin:0}
+    .card-list li{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+    .search{display:flex;gap:8px}
+    input[type=text]{padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:#fff;outline:none}
+    .tag{background:rgba(0,0,0,0.35);padding:6px 8px;border-radius:6px;color:#fff;font-size:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">M</div>
+      <div>
+        <h1>MoptoGP</h1>
+        <div class="muted" style="font-size:13px">Enciclopedia y portal no oficial sobre MotoGP</div>
+      </div>
+    </div>
+    <nav>
+      <a href="historia.html">Historia</a>
+      <a href="categorias.html">Categorías</a>
+      <a href="#teams">Equipos & Pilotos</a>
+      <a href="#calendar">Calendario</a>
+      <a href="#gallery">Galería</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <h2>Todo lo que se sabe sobre MotoGP, en un solo lugar</h2>
+        <p>Historia, equipos, pilotos, calendario, reglas técnicas y noticias — recopiladas y organizadas para aficionados y profesionales. Esta web es una base que puedes actualizar con datos en vivo desde las fuentes oficiales.</p>
+        <div style="margin-top:18px" class="card">
+          <strong>Buscar:</strong>
+          <div class="search" style="margin-top:8px">
+            <input id="globalSearch" type="text" placeholder="Busca por piloto, equipo o circuito..." />
+            <a href="#" class="btn" onclick="searchSite(event)">Buscar</a>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat card">
+            <div class="pill">Fundada</div>
+            <div style="font-size:20px;margin-top:8px">1949</div>
+            <div class="muted">Primera temporada FIM</div>
+          </div>
+          <div class="stat card">
+            <div class="pill">Clases</div>
+            <div style="font-size:20px;margin-top:8px">MotoGP • Moto2 • Moto3</div>
+            <div class="muted">Top level world championship</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3>Resumen rápido</h3>
+        <ul class="card-list">
+          <li><strong>Organizador:</strong> Dorna Sports (derechos comerciales).</li>
+          <li><strong>Regulador:</strong> FIM (Federación Internacional de Motociclismo).</li>
+          <li><strong>Formato:</strong> Clasificación, Sprint (donde aplica) y Carrera principal.</li>
+        </ul>
+        <div style="margin-top:12px">
+          <a class="btn" href="https://www.motogp.com/" target="_blank" rel="noopener">Visitar MotoGP oficial</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="section-title"><div class="pill">Historia</div></div>
+      <div class="card">
+        <p><strong>Grand Prix motorcycle racing</strong> nació en 1949 como el campeonato mundial organizado por la FIM. A lo largo de las décadas evolucionó en categorías y tecnologías hasta la era moderna de MotoGP, con prototipos de altísima tecnología y fabricantes globales. Esta web resume los hitos, reglamentos y momentos históricos más relevantes.</p>
+        <p class="muted" style="margin-top:8px">Fuentes oficiales y de referencia: Dorna Sports y artículos técnicos y enciclopedias deportivas.</p>
+      </div>
+    </section>
+
+    <section id="classes">
+      <div class="section-title"><div class="pill">Categorías</div></div>
+      <div class="grid">
+        <div class="card">
+          <h3>MotoGP™</h3>
+          <p>La clase reina — motocicletas prototipo, tamaños de motor y electrónica al más alto nivel. Carreras con las máquinas más potentes y pilotos de élite.</p>
+          <p class="muted">Las reglas técnicas difieren por temporada; consulta siempre la normativa FIM / Dorna.</p>
+        </div>
+        <div class="card">
+          <h3>Moto2™</h3>
+          <p>Clase intermedia. Tradicionalmente motores controlados (ej. Triumph desde 2019) y chasis competitivos: es la cuna de futuros pilotos de MotoGP.</p>
+        </div>
+        <div class="card">
+          <h3>Moto3™</h3>
+          <p>Clase ligera/entrada al mundial, donde suelen empezar pilotos jóvenes que aspiran a subir por la parrilla.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="teams">
+      <div class="section-title"><div class="pill">Equipos y Pilotos</div></div>
+      <div class="card">
+        <p>Listado de equipos, fabricantes y pilotos de la parrilla 2025.</p>
+        <table style="width:100%;border-collapse:collapse;text-align:left">
+          <thead>
+            <tr style="background:rgba(255,255,255,0.08)">
+              <th style="padding:8px">Equipo</th>
+              <th style="padding:8px">Pilotos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:8px">Ducati Lenovo Team</td><td style="padding:8px">Francesco Bagnaia (#1), Marc Márquez (#93)</td></tr>
+            <tr><td style="padding:8px">Prima Pramac Yamaha MotoGP</td><td style="padding:8px">Jack Miller (#43), Miguel Oliveira (#88)</td></tr>
+            <tr><td style="padding:8px">Pertamina Enduro VR46 Racing Team</td><td style="padding:8px">Fabio Di Giannantonio (#49), Franco Morbidelli (#21)</td></tr>
+            <tr><td style="padding:8px">Gresini Racing MotoGP</td><td style="padding:8px">Álex Márquez (#73), Fermin Aldeguer (#54)</td></tr>
+            <tr><td style="padding:8px">Aprilia Racing</td><td style="padding:8px">Jorge Martin (#1), Marco Bezzecchi (#72)</td></tr>
+            <tr><td style="padding:8px">Trackhouse Racing</td><td style="padding:8px">Raúl Fernández (#25), Ai Ogura (#79)</td></tr>
+            <tr><td style="padding:8px">Red Bull KTM Factory Racing</td><td style="padding:8px">Brad Binder (#33), Pedro Acosta (#31)</td></tr>
+            <tr><td style="padding:8px">Red Bull KTM Tech3</td><td style="padding:8px">Enea Bastianini (#23), Maverick Viñales (#12)</td></tr>
+            <tr><td style="padding:8px">Repsol Honda HCR Team</td><td style="padding:8px">Joan Mir (#36), Luca Marini (#10)</td></tr>
+            <tr><td style="padding:8px">Castrol Honda LCR</td><td style="padding:8px">Johann Zarco (#5)</td></tr>
+            <tr><td style="padding:8px">Idemitsu Honda LCR</td><td style="padding:8px">Somkiat Chantra (#35)</td></tr>
+            <tr><td style="padding:8px">Monster Energy Yamaha MotoGP</td><td style="padding:8px">Fabio Quartararo (#20), Álex Rins (#42)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="calendar">
+      <div class="section-title"><div class="pill">Calendario</div></div>
+      <div class="card">
+        <p>Calendario oficial del Campeonato del Mundo MotoGP™ 2025.</p>
+        <table style="width:100%;border-collapse:collapse;text-align:left">
+          <thead>
+            <tr style="background:rgba(255,255,255,0.08)">
+              <th style="padding:8px">Fecha</th>
+              <th style="padding:8px">Gran Premio</th>
+              <th style="padding:8px">Circuito</th>
+              <th style="padding:8px">País</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:8px">9 marzo</td><td style="padding:8px">Qatar Airways Grand Prix of Qatar</td><td style="padding:8px">Lusail International Circuit</td><td style="padding:8px">Catar</td></tr>
+            <tr><td style="padding:8px">23 marzo</td><td style="padding:8px">Grand Prix of Portugal</td><td style="padding:8px">Autódromo Internacional do Algarve</td><td style="padding:8px">Portugal</td></tr>
+            <tr><td style="padding:8px">6 abril</td><td style="padding:8px">Grand Prix of Argentina</td><td style="padding:8px">Termas de Río Hondo</td><td style="padding:8px">Argentina</td></tr>
+            <tr><td style="padding:8px">13 abril</td><td style="padding:8px">Grand Prix of the Americas</td><td style="padding:8px">Circuit of the Americas</td><td style="padding:8px">EE.UU.</td></tr>
+            <tr><td style="padding:8px">4 mayo</td><td style="padding:8px">Gran Premio de España</td><td style="padding:8px">Circuito de Jerez</td><td style="padding:8px">España</td></tr>
+            <tr><td style="padding:8px">18 mayo</td><td style="padding:8px">Grand Prix de France</td><td style="padding:8px">Le Mans</td><td style="padding:8px">Francia</td></tr>
+            <tr><td style="padding:8px">1 junio</td><td style="padding:8px">Gran Premio d’Italia</td><td style="padding:8px">Mugello</td><td style="padding:8px">Italia</td></tr>
+            <tr><td style="padding:8px">8 junio</td><td style="padding:8px">Grand Prix de Catalunya</td><td style="padding:8px">Circuit de Barcelona-Catalunya</td><td style="padding:8px">España</td></tr>
+            <tr><td style="padding:8px">15 junio</td><td style="padding:8px">Grand Prix of Kazakhstan</td><td style="padding:8px">Sokol International Racetrack</td><td style="padding:8px">Kazajistán</td></tr>
+            <tr><td style="padding:8px">29 junio</td><td style="padding:8px">TT Assen</td><td style="padding:8px">TT Circuit Assen</td><td style="padding:8px">Países Bajos</td></tr>
+            <tr><td style="padding:8px">13 julio</td><td style="padding:8px">Grand Prix of Germany</td><td style="padding:8px">Sachsenring</td><td style="padding:8px">Alemania</td></tr>
+            <tr><td style="padding:8px">3 agosto</td><td style="padding:8px">British Grand Prix</td><td style="padding:8px">Silverstone</td><td style="padding:8px">Reino Unido</td></tr>
+            <tr><td style="padding:8px">17 agosto</td><td style="padding:8px">Austrian Grand Prix</td><td style="padding:8px">Red Bull Ring</td><td style="padding:8px">Austria</td></tr>
+            <tr><td style="padding:8px">31 agosto</td><td style="padding:8px">Grand Prix of Aragón</td><td style="padding:8px">MotorLand Aragón</td><td style="padding:8px">España</td></tr>
+            <tr><td style="padding:8px">7 septiembre</td><td style="padding:8px">San Marino & Riviera di Rimini GP</td><td style="padding:8px">Misano World Circuit Marco Simoncelli</td><td style="padding:8px">Italia</td></tr>
+            <tr><td style="padding:8px">21 septiembre</td><td style="padding:8px">Indian Grand Prix</td><td style="padding:8px">Buddh International Circuit</td><td style="padding:8px">India</td></tr>
+            <tr><td style="padding:8px">28 septiembre</td><td style="padding:8px">Grand Prix of Indonesia</td><td style="padding:8px">Mandalika International Street Circuit</td><td style="padding:8px">Indonesia</td></tr>
+            <tr><td style="padding:8px">12 octubre</td><td style="padding:8px">Japanese Grand Prix</td><td style="padding:8px">Twin Ring Motegi</td><td style="padding:8px">Japón</td></tr>
+            <tr><td style="padding:8px">19 octubre</td><td style="padding:8px">Australian Grand Prix</td><td style="padding:8px">Phillip Island</td><td style="padding:8px">Australia</td></tr>
+            <tr><td style="padding:8px">26 octubre</td><td style="padding:8px">Thai Grand Prix</td><td style="padding:8px">Chang International Circuit</td><td style="padding:8px">Tailandia</td></tr>
+            <tr><td style="padding:8px">9 noviembre</td><td style="padding:8px">Petronas Grand Prix of Malaysia</td><td style="padding:8px">Sepang International Circuit</td><td style="padding:8px">Malasia</td></tr>
+            <tr><td style="padding:8px">16 noviembre</td><td style="padding:8px">Gran Premio de la Comunitat Valenciana</td><td style="padding:8px">Circuit Ricardo Tormo</td><td style="padding:8px">España</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-title"><div class="pill">Galería</div></div>
+      <div class="grid-cards">
+        <div class="card"><img src="Imagen1.jpg" alt="" style="width:100%;border-radius:6px;margin-bottom:8px"><div class="muted"></div></div>
+        <div class="card"><img src="Imagen2.jpg" alt="" style="width:100%;border-radius:6px;margin-bottom:8px"><div class="muted"></div></div>
+        <div class="card"><img src="Imagen3.jpeg" alt="" style="width:100%;border-radius:6px;margin-bottom:8px"><div class="muted"></div></div>
+         <div class="card"><img src="trofeo.jpg" alt="" style="width:100%;border-radius:6px;margin-bottom:8px"><div class="muted"></div></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title"><div class="pill">Contacto</div></div>
+      <div class="card">
+        <p>Este es un proyecto personal de fans. Si quieres contribuir con correcciones o datos adicionales:</p>
+        <ul class="card-list">
+          <li>Email: <a href="mailto:fchiroque3110@gmail.com">fchiroque3110@gmail.com</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+     <footer>
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+      <small>Proyecto no oficial — información recopilada de fuentes públicas.</small>
+      <strong>Derechos Reservados por: Fabrizio Chiroque</strong>
+    </div>
+    <!-- Redes Sociales -->
+ <div style="margin-top:20px; text-align:center;">
+  <p>Síguenos en nuestras redes sociales</p>
+  <div style="display:flex; gap:15px; justify-content:center; font-size:30px;">
+    <a href="https://www.facebook.com/MotoGP" target="_blank" style="color:#1877F2;">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/MotoGP" target="_blank" style="color:#1DA1F2;">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com/motogp/" target="_blank" style="color:#E4405F;">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/user/MotoGP" target="_blank" style="color:#FF0000;">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://www.tiktok.com/@motogp" target="_blank" style="color:#000000;">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+ </div>
+
+    <!-- Enlaces Azules -->
+    <div style="background-color:#002b5c; color:white; padding:20px 0;">
+      <div style="display:flex;justify-content:center;gap:40px;">
+        <div>
+          <h4>Oficial MotoGP</h4>
+          <ul style="list-style:none;padding:0;">
+            <li><a href="https://timingpass.motogp.com/en/subscribe" target="_blank" style="color:white;text-decoration:none;">Timepass</a></li>
+            <li><a href="https://subscribe.motogp.com/en/subscribe" target="_blank" style="color:white;text-decoration:none;">Donde ver</a></li>
+            <li><a href="https://www.motogp.com/en/apps" target="_blank" style="color:white;text-decoration:none;">Apps</a></li>
+            <li><a href="https://www.motogp.com/en/register" target="_blank" style="color:white;text-decoration:none;">Comunidad</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ventas Online MotoGP</h4>
+          <ul style="list-style:none;padding:0;">
+            <li><a href="https://tickets.motogp.com/en/?utm_source=motogp.com&utm_medium=web_menu&utm_campaign=TS_home" target="_blank" style="color:white;text-decoration:none;">Entradas Online</a></li>
+            <li><a href="https://motogppremier.motogp.com/motogp-premier?utm_source=motogp.com&utm_medium=partner_referral&utm_campaign=motogp_web_experiences" target="_blank" style="color:white;text-decoration:none;">Experiencia Dentro</a></li>
+            <li><a href="https://motogppremier.motogp.com/hospitality?utm_source=motogp.com&utm_medium=partner_referral&utm_campaign=motogp_web_hospitality" target="_blank" style="color:white;text-decoration:none;">Hospitality</a></li>
+            <li><a href="https://store3.motogp.com/en/?_s=bm-fi-motogp-prtsite-MainMenu-300522-JM" target="_blank" style="color:white;text-decoration:none;">Tienda</a></li>
+            <li><a href="https://motogpauthentics.com/?utm_source=referral&utm_medium=navigation-link&utm_campaign=partner-referral" target="_blank" style="color:white;text-decoration:none;">Ventas Limitadas</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Acerca de MotoGP</h4>
+          <ul style="list-style:none;padding:0;">
+            <li><a href="https://www.motogp.com/en/sponsors" target="_blank" style="color:white;text-decoration:none;">Patrocinadores oficiales</a></li>
+            <li><a href="https://www.motogp.com/en/broadcasters" target="_blank" style="color:white;text-decoration:none;">Medios oficiales</a></li>
+            <li><a href="https://www.motogp.com/en/glossary" target="_blank" style="color:white;text-decoration:none;">Glosario</a></li>
+            <li><a href="https://www.motogp.com/en/help-center" target="_blank" style="color:white;text-decoration:none;">Preguntas mas frecuentes</a></li>
+            <li><a href="https://predictor.motogp.com/?utm_source=motogp.com&utm_medium=referral&utm_content=website&utm_campaign=footer" target="_blank" style="color:white;text-decoration:none;">Predicciones</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <img src="https://www.whatsapp.com/channel/0029Va4R14Z1iUxYGtYvLg2M" alt="QR MotoGP WhatsApp" style="width:150px; height:150px;">
+  <!-- Botón flotante WhatsApp -->
+ <div id="whatsappToggle" style="
+  position: fixed;
+  bottom: 130px; /* justo arriba del chatbot */
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 10000;
+ ">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:30px; height:30px;">
+ </div>
+
+ <!-- Contenedor QR oculto -->
+ <div id="whatsappQR" style="
+  position: fixed;
+  bottom: 200px; /* un poco arriba del botón */
+  right: 20px;
+  width: 160px;
+  padding: 10px;
+  background: white;
+  border: 2px solid #25D366;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: none;
+  text-align: center;
+  z-index: 9999;
+  cursor: default;
+ ">
+  <p style="font-weight: bold; color: #25D366; margin: 0 0 8px 0; font-family: Arial, sans-serif;">WhatsApp MotoGP</p>
+  <a href="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" target="_blank" rel="noopener noreferrer">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="QR WhatsApp MotoGP" style="width:150px; height:150px;">
+  </a>
+ </div>
+
+ <script>
+  const whatsappToggle = document.getElementById('whatsappToggle');
+  const whatsappQR = document.getElementById('whatsappQR');
+
+  whatsappToggle.addEventListener('click', () => {
+    if (whatsappQR.style.display === 'none' || whatsappQR.style.display === '') {
+      whatsappQR.style.display = 'block';
+    } else {
+      whatsappQR.style.display = 'none';
+    }
+  });
+ </script>
+
+
+
+
+  <!-- Chatbot Simple -->
+ <div id="chatbot" style="position: fixed; bottom: 30px; right: 30px; width: 300px; height: 400px; background-color: #333; color: white; border-radius: 8px; padding: 10px; display: none;">
+    <div style="height: 90%; overflow-y: auto; margin-bottom: 10px;">
+        <div id="chatMessages" style="font-size: 14px; line-height: 20px;"></div>
+    </div>
+    <input type="text" id="userInput" placeholder="Escribe aquí..." style="width: 80%; padding: 8px; border-radius: 4px; border: none; margin-right: 10px;" />
+    <button id="sendMessage" style="padding: 8px 12px; border-radius: 4px; background-color: #ff6b6b; border: none; cursor: pointer;">Enviar</button>
+ </div>
+
+  <!-- Botón para abrir el chatbot -->
+  <button id="openChat" style="position: fixed; bottom: 30px; right: 30px; background-color: #ff6b6b; padding: 12px 20px; border-radius: 50%; color: white; border: none; cursor: pointer;">💬</button>
+
+ <script>
+  // Mostrar y ocultar el chatbot
+  const openChat = document.getElementById('openChat');
+  const chatbot = document.getElementById('chatbot');
+  const chatMessages = document.getElementById('chatMessages');
+  const userInput = document.getElementById('userInput');
+  const sendMessage = document.getElementById('sendMessage');
+
+  openChat.addEventListener('click', () => {
+    chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'block' : 'none';
+  });
+
+  sendMessage.addEventListener('click', () => {
+    const message = userInput.value;
+    if (message.trim() === '') return;
+
+    // Mostrar el mensaje del usuario
+    chatMessages.innerHTML += `<div><strong>Tú:</strong> ${message}</div>`;
+    userInput.value = '';
+
+    // Respuesta automática del bot
+    setTimeout(() => {
+      const botResponse = "¡Hola! ¿En qué puedo ayudarte?"; // Aquí puedes personalizar la respuesta
+      chatMessages.innerHTML += `<div><strong>Bot:</strong> ${botResponse}</div>`;
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Desplazar hacia abajo
+    }, 1000);
+  });
+ </script>
+
+
+
+  <script>
+    function searchSite(e){
+      if(e) e.preventDefault();
+      const q = document.getElementById('globalSearch').value.toLowerCase();
+      document.querySelectorAll('#teams table tbody tr, #calendar table tbody tr').forEach(tr=>{
+        tr.style.display = [...tr.innerText.toLowerCase()].join('').includes(q)?'':'none';
+        if(tr.innerText.toLowerCase().includes(q)){ tr.style.display=''; } else { tr.style.display='none'; }
+      });
+    }
+  </script>
+</body>
+</html>

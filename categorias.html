@@ -1,0 +1,191 @@
+
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MotoGP — Categorías</title>
+  <style>
+    
+    .card img {
+    width: 100%;
+    height: 200px;       /* todas las imágenes tendrán esta altura */
+    object-fit: cover;   /* recorta para llenar sin deformar */
+    border-radius: 8px;
+    margin-top: 10px;
+    }
+
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f5f5f5;
+      margin: 0;
+      line-height: 1.6;
+    }
+    header, footer {
+      padding: 18px 28px;
+      background: #000;
+      color: #bbb;
+    }
+    nav a {
+      color: #ddd;
+      margin-right: 16px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover { color: #d0021b; }
+
+    h1, h2 {
+      text-align: center;
+      color: #d0021b;
+      margin: 30px 0;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card h3 { color: #d0021b; margin-bottom: 10px; }
+
+    /* Tabla comparativa */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    th {
+      background: #d0021b;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="font-weight:700;color:#fff">🏍 MotoGP</div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="historia.html">Historia</a>
+        <a href="categorias.html">Categorías</a>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Categorías del Campeonato Mundial</h1>
+
+  <section class="section">
+    <h2>Categorías actuales</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>MotoGP</h3>
+        <p>La categoría reina del motociclismo. Motos de 1000cc, más de 250 hp, velocidades superiores a 350 km/h. Aquí compiten los mejores pilotos del mundo.</p>
+        <img src="Motogp.jpg" alt="">
+      </div>
+      <div class="card">
+        <h3>Moto2</h3>
+        <p>La categoría intermedia. Motos con motores Triumph de 765cc, alrededor de 140 hp. Es la antesala directa a MotoGP.</p>
+        <img src="Moto2.jpg" alt="">
+      </div>
+      <div class="card">
+        <h3>Moto3</h3>
+        <p>La categoría ligera. Motos de 250cc 4T, con chasis pequeños y gran cantidad de jóvenes talentos. Es la puerta de entrada al Mundial.</p>
+        <img src="Moto3.jpeg" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Categorías históricas</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>500cc</h3>
+        <p>La antigua categoría reina (1949–2001). De aquí nacieron leyendas como Agostini, Rainey, Schwantz, Doohan y Rossi.</p>
+      </div>
+      <div class="card">
+        <h3>250cc</h3>
+        <p>Categoría intermedia histórica. Dominada por pilotos como Jorge Lorenzo, Dani Pedrosa y Max Biaggi antes de llegar a MotoGP.</p>
+      </div>
+      <div class="card">
+        <h3>125cc</h3>
+        <p>La categoría ligera tradicional. De aquí surgieron Valentino Rossi, Marc Márquez y Casey Stoner.</p>
+      </div>
+      <div class="card">
+        <h3>80cc/50cc</h3>
+        <p>Categorías pequeñas ya desaparecidas, populares en los años 70 y 80. Fueron la base del motociclismo de competición.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Comparativa técnica</h2>
+    <table>
+      <tr>
+        <th>Categoría</th>
+        <th>Cilindrada</th>
+        <th>Potencia aprox.</th>
+        <th>Velocidad máx.</th>
+      </tr>
+      <tr>
+        <td>MotoGP</td>
+        <td>1000cc</td>
+        <td>250+ hp</td>
+        <td>350 km/h</td>
+      </tr>
+      <tr>
+        <td>Moto2</td>
+        <td>765cc</td>
+        <td>140 hp</td>
+        <td>300 km/h</td>
+      </tr>
+      <tr>
+        <td>Moto3</td>
+        <td>250cc</td>
+        <td>60 hp</td>
+        <td>240 km/h</td>
+      </tr>
+      <tr>
+        <td>MotoE</td>
+        <td>Eléctrica</td>
+        <td>120 kW</td>
+        <td>270 km/h</td>
+      </tr>
+    </table>
+  </section>
+
+  <footer>
+    <p>Archivo de categorías MotoGP — No oficial<br>
+    <strong>Derechos Reservados por: Fabrizio Chiroque</strong></p>
+  </footer>
+</body>
+</html>
